@@ -25,14 +25,14 @@ while running:
         projectile.move()
 
     # get all monsters and make them move
-    for monster in game.all_monster:
+    for monster in game.all_monsters:
         monster.forward()
 
     # draw all projectiles on screen
     game.player.all_projectiles.draw(screen)
 
     # draw all monsters on screen
-    game.all_monster.draw(screen)
+    game.all_monsters.draw(screen)
 
     # moving player left or right
     if game.pressed.get(pygame.K_RIGHT) and game.player.rect.x + game.player.rect.width < screen.get_width():

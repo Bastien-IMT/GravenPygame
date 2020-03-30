@@ -4,7 +4,7 @@ from projectile import Projectile
 
 
 class Player(pygame.sprite.Sprite):
-    def __init__(self, screen):
+    def __init__(self, screen, game):
         super().__init__()
         self.health = 100
         self.max_health = 100
@@ -17,9 +17,11 @@ class Player(pygame.sprite.Sprite):
         self.screen = screen
         self.rect.x = self.screen.get_width() / 2 - 90
         self.rect.y = 500
+        self.game = game
 
     def mov_right(self):
-        self.rect.x += self.velocity
+        if not self.game.check_collision(self, self.game.all_monsters):
+            self.rect.x += self.velocity
 
     def mov_left(self):
         self.rect.x -= self.velocity
