@@ -16,7 +16,7 @@ class Player(pygame.sprite.Sprite):
         self.all_projectiles = pygame.sprite.Group()
         self.screen = screen
         self.rect.x = self.screen.get_width() / 2 - 90
-        self.rect.y = 500
+        self.rect.y = 490
         self.game = game
 
     def mov_right(self):
