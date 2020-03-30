@@ -15,7 +15,7 @@ class Player(pygame.sprite.Sprite):
         self.nbProjectiles = 0
         self.all_projectiles = pygame.sprite.Group()
         self.screen = screen
-        self.rect.x = self.screen.get_width()/2 -90
+        self.rect.x = self.screen.get_width() / 2 - 90
         self.rect.y = 500
 
     def mov_right(self):
@@ -25,8 +25,7 @@ class Player(pygame.sprite.Sprite):
         self.rect.x -= self.velocity
 
     def launch_projectile(self):
-        # create instance of 2 projectiles and adding it in group
-        if self.nbProjectiles < 10:
-            self.all_projectiles.add(Projectile(self, self.screen, "LEFT"))
-            self.all_projectiles.add(Projectile(self, self.screen, "RIGHT"))
-            self.nbProjectiles += 2
+        # create instance of 1 projectile and adding it in group
+        if self.nbProjectiles < 5:
+            self.all_projectiles.add(Projectile(self, self.screen))
+            self.nbProjectiles += 1
