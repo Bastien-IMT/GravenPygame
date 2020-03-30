@@ -5,12 +5,11 @@ pygame.init()
 
 # generate window
 pygame.display.set_caption("North Crew")
-screen = pygame.display.set_mode((1500, 720))
+screen = pygame.display.set_mode((1080, 720))
 
 background = pygame.image.load('assets/bg.jpg')
 
 game = Game(screen)
-print("coucou")
 
 running = True
 while running:
@@ -21,12 +20,19 @@ while running:
     # load player
     screen.blit(game.player.image, game.player.rect)
 
-    # get all projectiles and make them move to the right
+    # get all projectiles and make them move
     for projectile in game.player.all_projectiles:
         projectile.move()
 
+    # get all monsters and make them move
+    for monster in game.all_monster:
+        monster.forward()
+
     # draw all projectiles on screen
     game.player.all_projectiles.draw(screen)
+
+    # draw all monsters on screen
+    game.all_monster.draw(screen)
 
     # moving player left or right
     if game.pressed.get(pygame.K_RIGHT) and game.player.rect.x + game.player.rect.width < screen.get_width():
